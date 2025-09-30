@@ -20,11 +20,16 @@ set(PROJECT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/ElaWidgetTools.qrc
 )
 
-if (ELAWIDGETTOOLS_BUILD_STATIC_LIB)
+if(EMSCRIPTEN)
     set(LIB_TYPE "STATIC")
-else ()
-    set(LIB_TYPE "SHARED")
-endif ()
+else()
+    option(ELAWIDGETTOOLS_BUILD_STATIC_LIB "Build static library." OFF)
+    if (ELAWIDGETTOOLS_BUILD_STATIC_LIB)
+        set(LIB_TYPE "STATIC")
+    else ()
+        set(LIB_TYPE "SHARED")
+    endif ()
+endif()
 
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_library(${PROJECT_NAME} ${LIB_TYPE}

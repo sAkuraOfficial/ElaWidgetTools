@@ -1,5 +1,7 @@
 ﻿#include <QApplication>
 #include <QScreen>
+#include<QFont>
+#include<QFontDatabase>
 
 #include "ElaApplication.h"
 #include "ElaLog.h"
@@ -21,6 +23,16 @@ int main(int argc, char* argv[])
 #endif
     QApplication a(argc, argv);
     eApp->init();
+    int fontId = QFontDatabase::addApplicationFont(":/Resource/yahei.ttf");
+    if (fontId != -1)
+    {
+        QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
+        if (!fontFamilies.isEmpty())
+        {
+            QFont font(fontFamilies.at(0));
+            a.setFont(font);
+        }
+    }
     //ElaLog::getInstance()->initMessageLog(true);
     MainWindow w;
     w.show();
