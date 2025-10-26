@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.5)
 
 project(ElaFramework VERSION 0.1 LANGUAGES CXX)
 
@@ -14,6 +14,7 @@ if(EMSCRIPTEN)
 endif()
 if(EMSCRIPTEN)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_PTHREADS=1 -matomics -mbulk-memory")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s INITIAL_MEMORY=256MB -s TOTAL_MEMORY=256MB")
 endif()
 
 #在这里配置QT路径 例如 D:/Qt/6.6.2/msvc2019_64 D:/Qt/5.15.2/msvc2019_64 /home/liniyous/Qt/5.15.2/gcc_64
@@ -27,11 +28,11 @@ list(APPEND CMAKE_PREFIX_PATH ${QT_SDK_DIR})
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-if (NOT WIN32)
-    add_link_options(-Wl,--disable-new-dtags)
-    set(CMAKE_SKIP_INSTALL_RPATH FALSE)
-    set(CMAKE_INSTALL_RPATH "${QT_SDK_DIR}/lib:${CMAKE_INSTALL_PREFIX}/ElaWidgetTools/lib")
-endif ()
+#if (NOT WIN32)
+#    add_link_options(-Wl,--disable-new-dtags)
+#    set(CMAKE_SKIP_INSTALL_RPATH FALSE)
+#    set(CMAKE_INSTALL_RPATH "${QT_SDK_DIR}/lib:${CMAKE_INSTALL_PREFIX}/ElaWidgetTools/lib")
+#endif ()
 
 add_subdirectory(ElaWidgetTools)
 if (WIN32 AND BUILD_ELAPACKETIO)
