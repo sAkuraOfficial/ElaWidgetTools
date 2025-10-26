@@ -120,6 +120,10 @@
         <file>Resource/Image/Model/RainMan.jpg</file>
         <file>Resource/Image/Model/RunningInTheDark.jpg</file>
         <file>Resource/Image/Model/STYXHELIX.jpg</file>
+        <file>Resource/Image/WindowBase/WorldTree.jpg</file>
+        <file>Resource/Image/WindowBase/WorldTree.gif</file>
+        <file>Resource/Image/WindowBase/Miku.png</file>
+        <file>Resource/Image/WindowBase/Miku.gif</file>
         <file>Resource/yahei.ttf</file>
     </qresource>
 </RCC>
